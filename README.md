@@ -1,4 +1,5 @@
-# fraser-house-devops
+# Fraser House DevOps
+
 DevOps Tech Lunch at Fraser House
 
-https://getemoji.com/
+[getemoji.com](https://getemoji.com/)

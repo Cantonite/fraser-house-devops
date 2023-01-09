@@ -1,13 +1,18 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>Fraser House Tech Lunch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <p>Hello, Website</p>
+    <center>
+        <h1>Fraser House Tech Lunch</h1>
+        <h1 id="emoji">if you see no emoji here, you have Javascript disabled</h1>
+    </center>
     <script type="text/javascript">
         fetch('${emoji_url}')
             .then((response) => response.json())
-            .then((data) => console.log(data));
+            .then((data) => document.getElementById("emoji").innerHTML = data.emoji);
     </script>
 </body>
 </html>

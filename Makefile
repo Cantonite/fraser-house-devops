@@ -1,12 +1,12 @@
-tf_init:
+init:
 	@terraform -chdir=stack init
 
-tf_apply_dev:
+apply: init
 	@terraform -chdir=stack apply -auto-approve -var-file=../variables/dev.tfvars
 
-tf_destroy_dev:
+destroy:
 	@terraform -chdir=stack destroy -auto-approve -var-file=../variables/dev.tfvars
 
-generate_qr_dev:
+qr:
 	@mkdir -p .output
 	@URL=$$(terraform -chdir=stack output -json | jq -r '.website_url.value') python qr.py
