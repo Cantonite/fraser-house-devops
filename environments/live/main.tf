@@ -1,3 +1,13 @@
+terraform {
+  cloud {
+    organization = "Cantonite"
+
+    workspaces {
+      name = "fraser-house-devops-test"
+    }
+  }
+}
+
 module "stack" {
     source = "../../app"
 
