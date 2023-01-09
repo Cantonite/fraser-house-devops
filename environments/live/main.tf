@@ -3,7 +3,7 @@ terraform {
     organization = "Cantonite"
 
     workspaces {
-      name = "fraser-house-devops-test"
+      name = "fraser-house-devops-live"
     }
   }
 }
