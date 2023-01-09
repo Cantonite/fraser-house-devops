@@ -1,4 +1,5 @@
 .build
+.output
 .terraform
 
 # Created by https://www.toptal.com/developers/gitignore/api/terraform,python
