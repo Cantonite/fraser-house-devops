@@ -46,7 +46,7 @@ resource "aws_lambda_function" "fraser_house_devops" {
   role             = aws_iam_role.iam_for_lambda.arn
   handler          = "emoji-backend.handler"
   runtime          = "python3.9"
-  source_code_hash = filebase64sha256("${path.module}/../.build/lambda_function_payload.zip")
+  source_code_hash = data.archive_file.lambda_my_function.output_base64sha256
 
   environment {
     variables = {
