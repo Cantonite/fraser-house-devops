@@ -17,4 +17,5 @@ deploy_live: init apply
 
 qr:
 	@mkdir -p .output
-	@URL=$$(terraform -chdir=environments/$(ENV_NAME) output -json | jq -r '.website_url.value') python qr.py
+	@ENV_NAME=test URL=$$(terraform -chdir=environments/test output -json | jq -r '.website_url.value') python qr.py
+	@ENV_NAME=live URL=$$(terraform -chdir=environments/live output -json | jq -r '.website_url.value') python qr.py
