@@ -99,6 +99,6 @@ resource "aws_s3_bucket_website_configuration" "site" {
   }
 }
 
-output "website_url" {
-  value = aws_s3_bucket_website_configuration.site.website_endpoint
-}
+# output "website_url" {
+#   value = aws_s3_bucket_website_configuration.site.website_endpoint
+# }
