@@ -35,7 +35,7 @@ resource "aws_iam_role" "iam_for_lambda" {
 
 data "archive_file" "lambda_my_function" {
   type             = "zip"
-  source_file      = "${path.module}/../app/handler.py"
+  source_file      = "${path.module}/handler.py"
   output_file_mode = "0666"
   output_path      = "${path.module}/../.build/lambda_function_payload.zip"
 }
@@ -86,7 +86,7 @@ resource "aws_s3_bucket" "site" {
 resource "aws_s3_object" "index_html" {
   bucket = aws_s3_bucket.site.bucket
   key    = "index.html"
-  content = templatefile("${path.module}/../app/index.template.html", {
+  content = templatefile("${path.module}/index.template.html", {
     emoji_url : aws_lambda_function_url.fraser_house_devops.function_url
   })
   content_type = "text/html"

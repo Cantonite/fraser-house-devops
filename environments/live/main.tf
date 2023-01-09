@@ -1,5 +1,5 @@
 module "stack" {
-    source = "../../stack"
+    source = "../../app"
 
     emoji = "🏆"
     env_name = "live"
