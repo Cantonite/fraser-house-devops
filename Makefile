@@ -1,12 +1,12 @@
 init:
-	@terraform -chdir=stack init
+	@terraform -chdir=environments/$$ENV_NAME init
 
 apply: init
-	@terraform -chdir=stack apply -auto-approve -var-file=../variables/dev.tfvars
+	@terraform -chdir=environments/$$ENV_NAME apply -auto-approve
 
 destroy:
-	@terraform -chdir=stack destroy -auto-approve -var-file=../variables/dev.tfvars
+	@terraform -chdir=environments/$$ENV_NAME destroy -auto-approve
 
 qr:
 	@mkdir -p .output
-	@URL=$$(terraform -chdir=stack output -json | jq -r '.website_url.value') python qr.py
+	@URL=$$(terraform -chdir=environments/$$ENV_NAME output -json | jq -r '.website_url.value') python qr.py

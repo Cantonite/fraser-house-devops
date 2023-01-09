@@ -1,4 +1,5 @@
 variable "emoji" {}
+variable "env_name" {}
 
 terraform {
   required_providers {
@@ -12,6 +13,7 @@ terraform {
 provider "aws" {
   region = "eu-west-2"
 }
+
 
 data "aws_iam_policy_document" "assume_role_policy" {
   statement {
@@ -40,7 +42,7 @@ data "archive_file" "lambda_my_function" {
 
 resource "aws_lambda_function" "fraser_house_devops" {
   filename         = "${path.module}/../.build/lambda_function_payload.zip"
-  function_name    = "fraser-house-devops"
+  function_name    = "fraser-house-devops-${var.env_name}"
   role             = aws_iam_role.iam_for_lambda.arn
   handler          = "handler.handler"
   runtime          = "python3.9"
@@ -78,7 +80,7 @@ data "aws_iam_policy_document" "allow_public_access" {
 }
 
 resource "aws_s3_bucket" "site" {
-  bucket = "fraser-house-devops"
+  bucket = "fraser-house-devops-${var.env_name}"
 }
 
 resource "aws_s3_object" "index_html" {
