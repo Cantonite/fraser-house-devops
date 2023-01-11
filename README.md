@@ -11,7 +11,8 @@ ENV_NAME=test make destroy
 ENV_NAME=live make destroy
 ```
 
-## Demo Time!
+## Make QR Codes
 
-
-
+```shell
+make qr
+```
