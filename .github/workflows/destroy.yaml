@@ -20,8 +20,8 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Deploy Test
+      - name: Destroy Test
         run: make destroy_test
 
-      - name: Destroy Test
+      - name: Destroy Live
         run: make destroy_live
