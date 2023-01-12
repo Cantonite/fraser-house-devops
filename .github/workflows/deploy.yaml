@@ -25,20 +25,20 @@ jobs:
       - name: Deploy Test
         run: make deploy_test
 
-  # deploy_live:
-  #   needs:
-  #     - deploy_test
-  #   runs-on: ubuntu-latest
-  #   environment: live
+  deploy_live:
+    needs:
+      - deploy_test
+    runs-on: ubuntu-latest
+    environment: live
 
-  #   steps:
-  #     - name: Setup Terraform
-  #       uses: hashicorp/setup-terraform@v1
-  #       with:
-  #         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+    steps:
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-  #     - name: Checkout Code
-  #       uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-  #     - name: Deploy Live
-  #       run: make deploy_live
+      - name: Deploy Live
+        run: make deploy_live

@@ -18,12 +18,17 @@ deploy_live: init apply
 destroy_test: ENV_NAME=test
 destroy_test: init destroy
 	echo "Test Destroyed"
-
+ 
 destroy_live: ENV_NAME=live
 destroy_live: init destroy
 	echo "Live Destroyed"
 
-qr:
-	@mkdir -p .output
+qr_test:
+	@mkdir .output
+	@echo "Getting URL from test environment"
 	@ENV_NAME=test URL=$$(terraform -chdir=environments/test output -json | jq -r '.website_url.value') python qr.py
+
+qr_live:
+	@mkdir .output
+	@echo "Getting URL from live environment"
 	@ENV_NAME=live URL=$$(terraform -chdir=environments/live output -json | jq -r '.website_url.value') python qr.py
